@@ -38,7 +38,8 @@ if (savedColorPM)
 const clearStorageBtn = document.getElementById("clear-storage");
 
 clearStorageBtn.addEventListener("click", () => {
-    localStorage.clear();
+    localStorage.removeItem("lightColorAM");
+    localStorage.removeItem("lightColorPM");
     alert("Local storage has been cleared!");
     location.reload(); // Optional: Reload the page to reset UI
   });
@@ -51,3 +52,26 @@ document.getElementById("date").innerHTML = dateText;
 
 // clear the storage the next day
 
+const getTodayDateString = () => 
+{
+  const d = new Date();
+  let dateText = d.toISOString().split("T")[0];
+};
+
+const clearStorageIfDateChanged = () => 
+{
+  const today = getTodayDateString();
+  const savedDate = localStorage.getItem("lastClearedDate");
+  
+  if (savedDate !== today) 
+  {
+    localStorage.removeItem(lightColorAM);
+    localStorage.removeItem(lightColorPM); // Clear local storage
+    
+    localStorage.setItem("lastClearedDate", today); // Update the stored date
+  
+  }
+};
+
+clearStorageIfDateChanged();
+console.log(localStorage.getItem("lastClearedDate"));
