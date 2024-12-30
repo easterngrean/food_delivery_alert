@@ -34,10 +34,3 @@ function lightChangePM()
 btnAM.onclick = lightChangeAM;
 btnPM.onclick = lightChangePM;
 
-const clearStorageBtn = document.getElementById("clear-storage");
-
-clearStorageBtn.addEventListener("click", () => {
-    localStorage.clear();
-    alert("Local storage has been cleared!");
-    location.reload(); // Optional: Reload the page to reset UI
-  });
