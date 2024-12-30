@@ -4,19 +4,38 @@ h1
   text-align: center;
 }
 
-.light {
-  border: 2px solid black;
-  border-radius: 50%;
-  margin-left: 50px;
-  position: absolute;
-  height: 55vw;
-  width: 55vw;
-  max-width: 500px;
-  max-height: 500px;
-  animation-name: wheel;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+circle {
+  fill: #e24428;
 }
 
-  
+.lights
+{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#lightAM
+{
+  fill: red;
+}
+
+#lightPM
+{
+  fill: red;
+}
+
+.switches 
+{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.switch
+{
+  padding:  30px;
+}
+
+button
+{
+  font-size: 2.5rem;
+}
