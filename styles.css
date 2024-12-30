@@ -1,12 +1,15 @@
 h1 
 {
-  font-size: 2.5rem;
+  font-size: 4rem;
   text-align: center;
+  font-family:  Arial, Helvetica, sans-serif;
 }
 
 #date
 {
+  font-size: 3rem;
   text-align: center;
+  font-family:  Arial, Helvetica, sans-serif;
 }
 
 circle {
@@ -43,13 +46,17 @@ circle {
 }
 
 .switch
-{  
-  border-style: none;
+{ 
 }
 
 button
 {
   font-size: 2.5rem;
   padding: 20px;
+  width: 200px;
+  border: grey;
   border-style: solid;
+  border-width: 2px;
+  font-family:  Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
