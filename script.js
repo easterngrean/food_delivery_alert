@@ -3,17 +3,12 @@ const circlePM = document.querySelector("#lightPM");
 const btnAM = document.getElementById("btnAM");
 const btnPM = document.getElementById("btnPM");
 
+// change the color of the lights on button press
 function lightChangeAM()
 {
   circleAM.style.fill = "green";
   localStorage.setItem("lightColorAM", "green");
 }
-
-const savedColorAM = localStorage.getItem("lightColorAM");
-if (savedColorAM)
-  {
-    circleAM.style.fill = "green";
-  }
 
 function lightChangePM()
 {
@@ -21,14 +16,24 @@ function lightChangePM()
   localStorage.setItem("lightColorPM", "green");
 }
 
+btnAM.onclick = lightChangeAM;
+btnPM.onclick = lightChangePM;
+
+// save the color of the lights
+const savedColorAM = localStorage.getItem("lightColorAM");
+if (savedColorAM)
+  {
+    circleAM.style.fill = "green";
+  }
+
 const savedColorPM = localStorage.getItem("lightColorPM");
 if (savedColorPM)
   {
     circlePM.style.fill = "green";
   }
 
-btnAM.onclick = lightChangeAM;
-btnPM.onclick = lightChangePM;
+
+// clear the local storage with clear button
 
 const clearStorageBtn = document.getElementById("clear-storage");
 
@@ -37,3 +42,12 @@ clearStorageBtn.addEventListener("click", () => {
     alert("Local storage has been cleared!");
     location.reload(); // Optional: Reload the page to reset UI
   });
+
+// show the date on the page
+
+const d = new Date();
+let dateText = d.toISOString().split("T")[0];
+document.getElementById("date").innerHTML = dateText;
+
+// clear the storage the next day
+
