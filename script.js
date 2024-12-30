@@ -26,11 +26,6 @@ if (savedColorPM)
     circlePM.style.fill = "green";
   }
 
-function lightChangePM()
-{
-  circlePM.style.fill = "green";
-}
-
 btnAM.onclick = lightChangeAM;
 btnPM.onclick = lightChangePM;
 
