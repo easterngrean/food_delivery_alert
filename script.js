@@ -6,10 +6,10 @@ const btnPM = document.getElementById("btnPM");
 function lightChangeAM()
 {
   circleAM.style.fill = "green";
-  localStorage.setItem("lightColor", "green");
+  localStorage.setItem("lightColorAM", "green");
 }
 
-const savedColorAM = localStorage.getItem("lightColor");
+const savedColorAM = localStorage.getItem("lightColorAM");
 if (savedColorAM)
   {
     circleAM.style.fill = "green";
@@ -18,9 +18,10 @@ if (savedColorAM)
 function lightChangePM()
 {
   circlePM.style.fill = "green";
+  localStorage.setItem("lightColorPM", "green");
 }
 
-const savedColorPM = localStorage.getItem("lightColor");
+const savedColorPM = localStorage.getItem("lightColorPM");
 if (savedColorPM)
   {
     circlePM.style.fill = "green";
@@ -29,3 +30,10 @@ if (savedColorPM)
 btnAM.onclick = lightChangeAM;
 btnPM.onclick = lightChangePM;
 
+const clearStorageBtn = document.getElementById("clear-storage");
+
+clearStorageBtn.addEventListener("click", () => {
+    localStorage.clear();
+    alert("Local storage has been cleared!");
+    location.reload(); // Optional: Reload the page to reset UI
+  });
