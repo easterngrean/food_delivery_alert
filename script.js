@@ -6,14 +6,14 @@ const btnPM = document.getElementById("btnPM");
 // change the color of the lights on button press
 function lightChangeAM()
 {
-  circleAM.style.fill = "green";
-  localStorage.setItem("lightColorAM", "green");
+  circleAM.style.fill = "red";
+  localStorage.setItem("lightColorAM", "red");
 }
 
 function lightChangePM()
 {
-  circlePM.style.fill = "green";
-  localStorage.setItem("lightColorPM", "green");
+  circlePM.style.fill = "red";
+  localStorage.setItem("lightColorPM", "red");
 }
 
 btnAM.onclick = lightChangeAM;
@@ -23,13 +23,13 @@ btnPM.onclick = lightChangePM;
 const savedColorAM = localStorage.getItem("lightColorAM");
 if (savedColorAM)
   {
-    circleAM.style.fill = "green";
+    circleAM.style.fill = "red";
   }
 
 const savedColorPM = localStorage.getItem("lightColorPM");
 if (savedColorPM)
   {
-    circlePM.style.fill = "green";
+    circlePM.style.fill = "red";
   }
 
 
@@ -46,17 +46,30 @@ clearStorageBtn.addEventListener("click", () => {
 
 // show the date on the page
 
+function displayDateTime () {
+
 const d = new Date();
-let dateText = d.toISOString().split("T")[0];
-document.getElementById("date").innerHTML = dateText;
+const date = d.toLocaleDateString("en-US", { day: "2-digit", month: "2-digit", year: "numeric" });
+const time = d.toLocaleTimeString();
+
+document.getElementById("dateTimeDisp").textContent = `${date} ${time}`;  
+};
+
+setInterval(displayDateTime, 1000);
+displayDateTime();
+
+// let dateText = d.toISOString().split("T")[0];
+// document.getElementById("date").innerHTML = dateText;
 
 // clear the storage the next day
 
+/*
 const getTodayDateString = () => 
 {
   const d = new Date();
   let dateText = d.toISOString().split("T")[0];
 };
+*/
 
 const clearStorageIfDateChanged = () => 
 {
