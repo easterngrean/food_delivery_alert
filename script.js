@@ -3,43 +3,50 @@ const circlePM = document.querySelector("#lightPM");
 const btnAM = document.getElementById("btnAM");
 const btnPM = document.getElementById("btnPM");
 
-// change the color of the lights on button press
-function lightChangeAM()
+
+//duplicate for the buttons
+const btnAMCSS = document.querySelector("#btnAM");
+const btnPMCSS = document.querySelector("#btnPM");
+
+function btnChangeAM()
 {
+  btnAMCSS.style.background = "red";
+  localStorage.setItem("savedColorAM", "red");
   circleAM.style.fill = "red";
-  localStorage.setItem("lightColorAM", "red");
 }
 
-function lightChangePM()
+function btnChangePM()
 {
+  btnPMCSS.style.background = "red";
+  localStorage.setItem("savedColorPM", "red");
   circlePM.style.fill = "red";
-  localStorage.setItem("lightColorPM", "red");
 }
 
-btnAM.onclick = lightChangeAM;
-btnPM.onclick = lightChangePM;
+btnAM.onclick = btnChangeAM;
+btnPM.onclick = btnChangePM;
+
+//end duplicate for the buttons
 
 // save the color of the lights
-const savedColorAM = localStorage.getItem("lightColorAM");
+const savedColorAM = localStorage.getItem("btnColorAM");
 if (savedColorAM)
   {
-    circleAM.style.fill = "red";
+    btnPMCSS.style.background = "red";
   }
 
-const savedColorPM = localStorage.getItem("lightColorPM");
+const savedColorPM = localStorage.getItem("btnColorPM");
 if (savedColorPM)
   {
-    circlePM.style.fill = "red";
+    btnPMCSS.style.background = "red";
   }
-
 
 // clear the local storage with clear button
 
 const clearStorageBtn = document.getElementById("clear-storage");
 
-clearStorageBtn.addEventListener("click", () => {
-    localStorage.removeItem("lightColorAM");
-    localStorage.removeItem("lightColorPM");
+    clearStorageBtn.addEventListener("click", () => {
+    localStorage.removeItem("btnColorAM");
+    localStorage.removeItem("btnColorPM");
     alert("Local storage has been cleared!");
     location.reload(); // Optional: Reload the page to reset UI
   });
@@ -52,7 +59,7 @@ const d = new Date();
 const date = d.toLocaleDateString("en-US", { day: "2-digit", month: "2-digit", year: "numeric" });
 const time = d.toLocaleTimeString();
 
-document.getElementById("dateTimeDisp").textContent = `${date} ${time}`;  
+document.getElementById("dateTimeDisp").textContent = `${time}`;  
 };
 
 setInterval(displayDateTime, 1000);
@@ -78,8 +85,8 @@ const clearStorageIfDateChanged = () =>
   
   if (savedDate !== today) 
   {
-    localStorage.removeItem(lightColorAM);
-    localStorage.removeItem(lightColorPM); // Clear local storage
+    localStorage.removeItem(btnColorAM);
+    localStorage.removeItem(btnColorPM); // Clear local storage
     
     localStorage.setItem("lastClearedDate", today); // Update the stored date
   
