@@ -12,14 +12,12 @@ function btnChangeAM()
 {
   btnAMCSS.style.background = "red";
   localStorage.setItem("savedColorAM", "red");
-  circleAM.style.fill = "red";
 }
 
 function btnChangePM()
 {
   btnPMCSS.style.background = "red";
   localStorage.setItem("savedColorPM", "red");
-  circlePM.style.fill = "red";
 }
 
 btnAM.onclick = btnChangeAM;
@@ -28,13 +26,13 @@ btnPM.onclick = btnChangePM;
 //end duplicate for the buttons
 
 // save the color of the lights
-const savedColorAM = localStorage.getItem("btnColorAM");
+const savedColorAM = localStorage.getItem("savedColorAM");
 if (savedColorAM)
   {
-    btnPMCSS.style.background = "red";
+    btnAMCSS.style.background = "red";
   }
 
-const savedColorPM = localStorage.getItem("btnColorPM");
+const savedColorPM = localStorage.getItem("savedColorPM");
 if (savedColorPM)
   {
     btnPMCSS.style.background = "red";
@@ -45,8 +43,8 @@ if (savedColorPM)
 const clearStorageBtn = document.getElementById("clear-storage");
 
     clearStorageBtn.addEventListener("click", () => {
-    localStorage.removeItem("btnColorAM");
-    localStorage.removeItem("btnColorPM");
+    localStorage.removeItem("savedColorAM");
+    localStorage.removeItem("savedColorPM");
     alert("Local storage has been cleared!");
     location.reload(); // Optional: Reload the page to reset UI
   });
@@ -57,9 +55,14 @@ function displayDateTime () {
 
 const d = new Date();
 const date = d.toLocaleDateString("en-US", { day: "2-digit", month: "2-digit", year: "numeric" });
-const time = d.toLocaleTimeString();
+  
+const formattedTime = d.toLocaleTimeString("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: true, // Use 12-hour clock but suppress the AM/PM marker
+}).replace(/\s?(AM|PM)/, ""); // Remove AM/PM if present
 
-document.getElementById("dateTimeDisp").textContent = `${time}`;  
+document.getElementById("dateTimeDisp").textContent = `${formattedTime}`;  
 };
 
 setInterval(displayDateTime, 1000);
@@ -70,13 +73,13 @@ displayDateTime();
 
 // clear the storage the next day
 
-/*
+
 const getTodayDateString = () => 
 {
   const d = new Date();
   let dateText = d.toISOString().split("T")[0];
 };
-*/
+
 
 const clearStorageIfDateChanged = () => 
 {
@@ -85,8 +88,8 @@ const clearStorageIfDateChanged = () =>
   
   if (savedDate !== today) 
   {
-    localStorage.removeItem(btnColorAM);
-    localStorage.removeItem(btnColorPM); // Clear local storage
+    localStorage.removeItem(savedColorAM);
+    localStorage.removeItem(savedColorPM); // Clear local storage
     
     localStorage.setItem("lastClearedDate", today); // Update the stored date
   
@@ -95,3 +98,4 @@ const clearStorageIfDateChanged = () =>
 
 clearStorageIfDateChanged();
 console.log(localStorage.getItem("lastClearedDate"));
+
