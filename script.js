@@ -4,7 +4,7 @@ const btnAM = document.getElementById("btnAM");
 const btnPM = document.getElementById("btnPM");
 
 
-//duplicate for the buttons
+//change color for the buttons
 const btnAMCSS = document.querySelector("#btnAM");
 const btnPMCSS = document.querySelector("#btnPM");
 
@@ -23,7 +23,6 @@ function btnChangePM()
 btnAM.onclick = btnChangeAM;
 btnPM.onclick = btnChangePM;
 
-//end duplicate for the buttons
 
 // save the color of the lights
 const savedColorAM = localStorage.getItem("savedColorAM");
@@ -54,12 +53,11 @@ const clearStorageBtn = document.getElementById("clear-storage");
 function displayDateTime () {
 
 const d = new Date();
-const date = d.toLocaleDateString("en-US", { day: "2-digit", month: "2-digit", year: "numeric" });
   
 const formattedTime = d.toLocaleTimeString("en-US", {
   hour: "2-digit",
   minute: "2-digit",
-  hour12: true, // Use 12-hour clock but suppress the AM/PM marker
+  hour12: false, // Use 12-hour clock but suppress the AM/PM marker
 }).replace(/\s?(AM|PM)/, ""); // Remove AM/PM if present
 
 document.getElementById("dateTimeDisp").textContent = `${formattedTime}`;  
@@ -67,9 +65,6 @@ document.getElementById("dateTimeDisp").textContent = `${formattedTime}`;
 
 setInterval(displayDateTime, 1000);
 displayDateTime();
-
-// let dateText = d.toISOString().split("T")[0];
-// document.getElementById("date").innerHTML = dateText;
 
 // clear the storage the next day
 
