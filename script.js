@@ -3,6 +3,12 @@ const circlePM = document.querySelector("#lightPM");
 const btnAM = document.getElementById("btnAM");
 const btnPM = document.getElementById("btnPM");
 
+const getTodayDateString = () => 
+{
+  const d = new Date();
+  let dateText = d.toISOString().split("T")[0];
+  return dateText;
+};
 
 //change color for the buttons
 const btnAMCSS = document.querySelector("#btnAM");
@@ -23,7 +29,6 @@ function btnChangePM()
 btnAM.onclick = btnChangeAM;
 btnPM.onclick = btnChangePM;
 
-
 // save the color of the lights
 const savedColorAM = localStorage.getItem("savedColorAM");
 if (savedColorAM)
@@ -38,18 +43,18 @@ if (savedColorPM)
   }
 
 // clear the local storage with clear button
-
 const clearStorageBtn = document.getElementById("clear-storage");
 
-    clearStorageBtn.addEventListener("click", () => {
-    localStorage.removeItem("savedColorAM");
-    localStorage.removeItem("savedColorPM");
-    alert("Local storage has been cleared!");
-    location.reload(); // Optional: Reload the page to reset UI
+clearStorageBtn.addEventListener("click", () => 
+  {                            
+      localStorage.removeItem("savedColorAM");
+      localStorage.removeItem("savedColorPM");
+      alert("Local storage has been cleared!");
+      location.reload(); // Optional: Reload the page to reset UI
+      localStorage.setItem("lastClearedDate", getTodayDateString);
   });
 
-// show the date on the page
-
+// show the time on the page
 function displayDateTime () {
 
 const d = new Date();
@@ -68,29 +73,23 @@ displayDateTime();
 
 // clear the storage the next day
 
-
-const getTodayDateString = () => 
-{
-  const d = new Date();
-  let dateText = d.toISOString().split("T")[0];
-};
-
+if (!localStorage.getItem("lastClearedDate")) {
+  localStorage.setItem("lastClearedDate", getTodayDateString());
+}
 
 const clearStorageIfDateChanged = () => 
 {
-  const today = getTodayDateString();
+  const todayDate = getTodayDateString();
   const savedDate = localStorage.getItem("lastClearedDate");
-  
-  if (savedDate !== today) 
+  if (savedDate !== todayDate) 
   {
-    localStorage.removeItem(savedColorAM);
-    localStorage.removeItem(savedColorPM); // Clear local storage
-    
-    localStorage.setItem("lastClearedDate", today); // Update the stored date
-  
+    localStorage.removeItem("savedColorAM");
+    localStorage.removeItem("savedColorPM"); // Clear local storage
+    localStorage.setItem("lastClearedDate", todayDate); // Update the stored date
   }
+  else
+    {
+      console.log("hump");
+    }
 };
-
 clearStorageIfDateChanged();
-console.log(localStorage.getItem("lastClearedDate"));
-
