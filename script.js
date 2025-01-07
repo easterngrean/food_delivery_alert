@@ -111,7 +111,7 @@ function getMillisecondsUntilTarget (targetHour, targetMinute, targetSecond) {
 };
 
 const scheduleRefreshAtMidnight = () => {
-const millisecondsUntilOneAm = getMillisecondsUntilTarget(8, 15, 0); // 1am
+const millisecondsUntilOneAm = getMillisecondsUntilTarget(8, 30, 0); // 1am
 
   console.log(
     `Browser will refresh in ${millisecondsUntilOneAm / 1000} seconds.`
