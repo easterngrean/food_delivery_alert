@@ -3,6 +3,7 @@ const circlePM = document.querySelector("#lightPM");
 const btnAM = document.getElementById("btnAM");
 const btnPM = document.getElementById("btnPM");
 
+
 const getTodayDateString = () => 
 {
   const d = new Date();
@@ -93,3 +94,34 @@ const clearStorageIfDateChanged = () =>
     }
 };
 clearStorageIfDateChanged();
+
+// force refresh the browser at 1am
+
+function getMillisecondsUntilTarget (targetHour, targetMinute, targetSecond) {
+  const target = new Date();
+  const now = new Date();
+  
+  target.setHours(targetHour, targetMinute, targetSecond, 0);
+  
+  if (target <= now)
+    {
+      target.setDate(target.getDate() + 1);
+    }
+  return target - now;
+};
+
+const scheduleRefreshAtMidnight = () => {
+const millisecondsUntilOneAm = getMillisecondsUntilTarget(8, 15, 0); // 1am
+
+  console.log(
+    `Browser will refresh in ${millisecondsUntilOneAm / 1000} seconds.`
+  );
+
+  // Set a timer to refresh at the calculated time
+  setTimeout(() => {
+    location.reload(); // Refresh the page
+  }, millisecondsUntilOneAm);
+};
+
+// Call the function to schedule the refresh
+scheduleRefreshAtMidnight();
