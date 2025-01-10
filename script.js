@@ -111,14 +111,15 @@ function getMillisecondsUntilTarget (targetHour, targetMinute, targetSecond) {
 };
 
 const scheduleRefreshAtMidnight = () => {
-const millisecondsUntilOneAm = getMillisecondsUntilTarget(8, 30, 0); // 1am
+const millisecondsUntilOneAm = getMillisecondsUntilTarget(1, 0, 0); // 1am
 
   console.log(
     `Browser will refresh in ${millisecondsUntilOneAm / 1000} seconds.`
   );
-
+  
   // Set a timer to refresh at the calculated time
   setTimeout(() => {
+    localStorage.clear(); // Clear local storage (optional)
     location.reload(); // Refresh the page
   }, millisecondsUntilOneAm);
 };
