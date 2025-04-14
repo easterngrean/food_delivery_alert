@@ -28,6 +28,7 @@ main
   border-width: 0.1rem;
   border-radius: 3px;
   background: yellow;
+  justify-content: center;
 }
 
 .clear-button 
