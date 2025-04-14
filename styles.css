@@ -2,10 +2,6 @@ body
 {
   margin-top: 35px;
   background-color: #141414;
-}
-
-#main
-{
   display: flex;
   justify-content: center;
 }
@@ -18,14 +14,8 @@ body
   color: white;
 }
 
-#dateTimeDisp
-{
-  margin: 0;
-}
-
 #btnAM, #btnPM
 {
-  font-size: 4rem;
   padding: 10px;
   width: 500px;
   height: 300px;
@@ -33,8 +23,6 @@ body
   border-style: solid;
   border-width: 0.1rem;
   border-radius: 3px;
-  font-family:  arial, Helvetica, sans-serif;
-  font-weight: bold;
   background: yellow;
 }
 
