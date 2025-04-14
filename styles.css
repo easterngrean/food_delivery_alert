@@ -4,11 +4,6 @@ body
   background-color: #141414;
 }
 
-main
-{
-  justify-content: center;
-}
-
 #dateTimeDisp
 {
   font-size: 12rem;
