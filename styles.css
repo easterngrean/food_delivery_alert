@@ -2,6 +2,10 @@ body
 {
   margin-top: 35px;
   background-color: #141414;
+}
+
+main
+{
   display: flex;
   justify-content: center;
 }
