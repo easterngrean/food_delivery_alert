@@ -17,14 +17,14 @@ const btnPMCSS = document.querySelector("#btnPM");
 
 function btnChangeAM()
 {
-  btnAMCSS.style.background = "red";
-  localStorage.setItem("savedColorAM", "red");
+  btnAMCSS.style.background = "white";
+  localStorage.setItem("savedColorAM", "white");
 }
 
 function btnChangePM()
 {
-  btnPMCSS.style.background = "red";
-  localStorage.setItem("savedColorPM", "red");
+  btnPMCSS.style.background = "white";
+  localStorage.setItem("savedColorPM", "white");
 }
 
 btnAM.onclick = btnChangeAM;
@@ -34,13 +34,13 @@ btnPM.onclick = btnChangePM;
 const savedColorAM = localStorage.getItem("savedColorAM");
 if (savedColorAM)
   {
-    btnAMCSS.style.background = "red";
+    btnAMCSS.style.background = "white";
   }
 
 const savedColorPM = localStorage.getItem("savedColorPM");
 if (savedColorPM)
   {
-    btnPMCSS.style.background = "red";
+    btnPMCSS.style.background = "white";
   }
 
 // clear the local storage with clear button
