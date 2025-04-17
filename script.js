@@ -1,6 +1,5 @@
 const circleAM = document.querySelector("#lightAM");
 const circlePM = document.querySelector("#lightPM");
-const btnAM = document.getElementById("btnAM");
 const btnPM = document.getElementById("btnPM");
 
 
@@ -12,35 +11,21 @@ const getTodayDateString = () =>
 };
 
 //change color for the buttons
-const btnAMCSS = document.querySelector("#btnAM");
 const btnPMCSS = document.querySelector("#btnPM");
-
-function btnChangeAM()
-{
-  btnAMCSS.style.background = "black";
-  localStorage.setItem("savedColorAM", "black");
-}
 
 function btnChangePM()
 {
-  btnPMCSS.style.background = "black";
-  localStorage.setItem("savedColorPM", "black");
+  btnPMCSS.style.background = "#141414";
+  localStorage.setItem("savedColorPM", "#141414");
 }
 
-btnAM.onclick = btnChangeAM;
 btnPM.onclick = btnChangePM;
 
 // save the color of the lights
-const savedColorAM = localStorage.getItem("savedColorAM");
-if (savedColorAM)
-  {
-    btnAMCSS.style.background = "black";
-  }
-
 const savedColorPM = localStorage.getItem("savedColorPM");
 if (savedColorPM)
   {
-    btnPMCSS.style.background = "black";
+    btnPMCSS.style.background = "#141414";
   }
 
 // clear the local storage with clear button
@@ -48,7 +33,6 @@ const clearStorageBtn = document.getElementById("clear-storage");
 
 clearStorageBtn.addEventListener("click", () => 
   {                            
-      localStorage.removeItem("savedColorAM");
       localStorage.removeItem("savedColorPM");
       alert("Local storage has been cleared!");
       location.reload(); // Optional: Reload the page to reset UI
@@ -84,7 +68,6 @@ const clearStorageIfDateChanged = () =>
   const savedDate = localStorage.getItem("lastClearedDate");
   if (savedDate !== todayDate) 
   {
-    localStorage.removeItem("savedColorAM");
     localStorage.removeItem("savedColorPM"); // Clear local storage
     localStorage.setItem("lastClearedDate", todayDate); // Update the stored date
   }
