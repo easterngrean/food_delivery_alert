@@ -19,10 +19,9 @@ body
 
 #btnPM
 {
-  font-size: 4rem;
   padding: 10px;
-  width: 550px;
-  height: 275px;
+  width: 600px;
+  height: 300px;
   border: #141414;
   border-style: solid;
   border-width: 0.1rem;
